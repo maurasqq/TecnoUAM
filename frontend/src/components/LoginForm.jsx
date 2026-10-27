@@ -15,8 +15,11 @@ export default function LoginForm({ onAutenticado }) {
     setCargando(true)
     setError(null)
     try {
-      const { data } = await axiosClient.post('/auth/login', { usuario, contrasena })
-      onAutenticado({ token: data.token, rol: data.rol })
+      const { data } = await axiosClient.post('/auth/login', {
+        username: usuario,
+        password: contrasena
+      })
+      onAutenticado({ token: data.token, rol: data.role })
     } catch (problema) {
       setError(mensajeError(problema, 'No se pudo iniciar sesión.'))
     } finally {
