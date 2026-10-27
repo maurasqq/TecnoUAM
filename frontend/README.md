@@ -6,6 +6,7 @@ Interfaz React (Vite + Axios) que consume la API protegida del backend.
 
 - Node.js 20 o superior.
 - Backend en ejecución con los endpoints `/api/auth/login` y `/api/equipos`, y CORS abierto para `http://localhost:5173`.
+- El puerto 5173 libre: Vite está configurado con `strictPort`, de modo que falla al arrancar en vez de cambiar de puerto y romper el CORS del backend.
 
 ## Configuración
 
@@ -32,7 +33,7 @@ Para compilar la versión de producción: `npm run build`.
 
 ## Uso
 
-1. Iniciar sesión con las cuentas de prueba del backend (`admin` o `user`).
+1. Iniciar sesión con las cuentas de prueba del backend: `admin` (rol ADMIN) u `operador` (rol USER). Sus contraseñas las define el backend con las variables `DEMO_ADMIN_PASSWORD` y `DEMO_USER_PASSWORD`.
 2. El token JWT se guarda en `sessionStorage` y Axios lo envía en la cabecera `Authorization: Bearer <token>` de cada petición.
 3. La tabla muestra código patrimonial, nombre, tipo y estado de los equipos reales devueltos por `GET /api/equipos`.
 4. El botón **Recargar** y el refresco de la página vuelven a consultar la API, de modo que los cambios hechos desde Postman se reflejan en la tabla.
