@@ -1,0 +1,37 @@
+Pruebas de la API — ejecutadas el 2026-10-26 21:33
+Base de datos recreada desde cero: Flyway aplicó V1 a V4.
+
+== Autenticacion
+  OK    login admin devuelve token                           si
+  OK    login operador devuelve token                        si
+  OK    login con contrasena incorrecta                      401
+== Seguridad
+  OK    GET equipos sin token                                401
+  OK    GET equipos con token USER                           200
+  OK    POST equipos con token USER                          403
+  OK    GET equipos con token invalido                       401
+== Equipos
+  OK    GET equipos con ADMIN                                200
+  OK    GET equipo 1                                         200
+  OK    GET equipo inexistente                               404
+  OK    POST equipo con ADMIN                                201
+  OK    POST equipo con codigo duplicado                     409
+  OK    POST equipo con datos invalidos                      400
+  OK    PUT equipo                                           200
+== Prestamos
+  OK    GET prestamos                                        200
+  OK    POST prestamo equipo 1                               201
+  OK    equipo 1 queda PRESTADO                              PRESTADO
+  OK    POST prestamo repetido del equipo 1                  409
+  OK    POST prestamo con fechas invalidas                   400
+  OK    PUT devolver prestamo                                200
+  OK    equipo 1 vuelve a DISPONIBLE                         DISPONIBLE
+  OK    PUT devolver otra vez                                409
+== Borrado
+  OK    DELETE equipo sin prestamos                          204
+  OK    DELETE equipo con prestamo activo                    409
+  OK    DELETE equipo con prestamo historico                 204
+  OK    GET del equipo eliminado                             404
+  OK    el eliminado no sale en el listado                   no
+
+RESULTADO: 27 correctos, 0 fallidos
