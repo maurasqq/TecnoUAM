@@ -53,7 +53,8 @@ public class PrestamoServiceImpl implements PrestamoService {
     public PrestamoResponseDTO crear(PrestamoRequestDTO request) {
 
         // 1. Comprobar que el equipo existe
-        Equipo equipo = equipoRepository.findById(request.getEquipoId())
+        Equipo equipo = equipoRepository
+                .findByIdAndEliminadoFalse(request.getEquipoId())
                 .orElseThrow(() -> new ResponseStatusException(
                         HttpStatus.NOT_FOUND,
                         "El equipo solicitado no existe"
