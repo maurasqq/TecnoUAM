@@ -38,3 +38,77 @@ h2 {
   font-weight: normal;
   margin: 0 0 1rem;
 }
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  max-width: 20rem;
+}
+
+.formulario label {
+  font-size: 0.875rem;
+  color: var(--gris);
+  margin-top: 0.5rem;
+}
+
+input {
+  font: inherit;
+  padding: 0.4rem 0.5rem;
+  border: 1px solid var(--linea);
+  background: var(--papel);
+  color: var(--tinta);
+}
+
+input:focus {
+  outline: 1px solid var(--tinta);
+  border-color: var(--tinta);
+}
+
+button {
+  font: inherit;
+  margin-top: 1rem;
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--tinta);
+  background: var(--papel);
+  color: var(--tinta);
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  background: var(--fondo-suave);
+}
+
+button:disabled {
+  color: var(--gris);
+  border-color: var(--linea);
+  cursor: default;
+}
+
+.barra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.875rem;
+  color: var(--gris);
+  border-bottom: 1px solid var(--linea);
+  padding-bottom: 0.75rem;
+}
+
+.barra button {
+  margin-top: 0;
+}
+
+.mensaje {
+  margin: 1rem 0 0;
+  padding: 0.5rem 0.75rem;
+  border-left: 2px solid var(--linea);
+  font-size: 0.9375rem;
+  color: var(--gris);
+}
+
+.mensaje--error {
+  border-left-color: var(--tinta);
+  color: var(--tinta);
+}
