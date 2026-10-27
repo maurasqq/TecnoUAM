@@ -23,6 +23,9 @@ public class Equipo {
     @Column(nullable = false)
     private EstadoEquipo estado = EstadoEquipo.DISPONIBLE;
 
+    @Column(nullable = false)
+    private boolean eliminado = false;
+
     public Long getId() { return id; }
 
     public String getCodigoPatrimonial() { return codigoPatrimonial; }
@@ -43,5 +46,10 @@ public class Equipo {
     public EstadoEquipo getEstado() { return estado; }
     public void setEstado(EstadoEquipo estado) {
         this.estado = estado;
+    }
+
+    public boolean isEliminado() { return eliminado; }
+    public void setEliminado(boolean eliminado) {
+        this.eliminado = eliminado;
     }
 }

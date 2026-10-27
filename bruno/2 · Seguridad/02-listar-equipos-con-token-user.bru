@@ -1,0 +1,19 @@
+meta {
+  name: Listar equipos con token USER
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/equipos
+  body: none
+  auth: none
+}
+
+headers {
+  Authorization: Bearer {{tokenUser}}
+}
+
+assert {
+  res.status: eq 200
+}

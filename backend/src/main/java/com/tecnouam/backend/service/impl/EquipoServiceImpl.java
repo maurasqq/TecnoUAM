@@ -34,7 +34,7 @@ public class EquipoServiceImpl implements EquipoService {
     @Override
     @Transactional(readOnly = true)
     public List<EquipoResponseDTO> listar() {
-        return equipoRepository.findAll()
+        return equipoRepository.findByEliminadoFalse()
                 .stream()
                 .map(this::convertirDTO)
                 .toList();
@@ -111,13 +111,12 @@ public class EquipoServiceImpl implements EquipoService {
             );
         }
 
-        // TODO: Cambiar por borrado lógico para conservar
-        // los préstamos históricos antes de integrar.
-        equipoRepository.delete(equipo);
+        equipo.setEliminado(true);
+        equipoRepository.save(equipo);
     }
 
     private Equipo obtenerEquipo(Long id) {
-        return equipoRepository.findById(id)
+        return equipoRepository.findByIdAndEliminadoFalse(id)
                 .orElseThrow(() -> new ResponseStatusException(
                         HttpStatus.NOT_FOUND,
                         "Equipo no encontrado"

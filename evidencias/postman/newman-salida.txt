@@ -1,0 +1,122 @@
+Ejecucion de la coleccion de Postman con Newman
+Fecha: 2026-10-26 23:04
+Base de datos recreada desde cero: Flyway aplico V1 a V4.
+
+newman
+
+TecnoUAM — Préstamo de equipos
+
+❏ 1 · Autenticación
+↳ Login ADMIN
+  POST http://localhost:8080/api/auth/login [200 OK, 657B, 2.6s]
+  ✓  Responde 200
+  ✓  Devuelve el rol ADMIN
+
+↳ Login USER
+  POST http://localhost:8080/api/auth/login [200 OK, 661B, 179ms]
+  ✓  Responde 200
+  ✓  Devuelve el rol USER
+
+↳ Login con credenciales incorrectas
+  POST http://localhost:8080/api/auth/login [401 Unauthorized, 554B, 257ms]
+  ✓  Responde 401
+
+❏ 2 · Seguridad
+↳ Listar equipos sin token
+  GET http://localhost:8080/api/equipos [401 Unauthorized, 568B, 9ms]
+  ✓  Responde 401
+
+↳ Listar equipos con token USER
+  GET http://localhost:8080/api/equipos [200 OK, 886B, 826ms]
+  ✓  Responde 200
+
+↳ Crear equipo con token USER
+  POST http://localhost:8080/api/equipos [403 Forbidden, 576B, 17ms]
+  ✓  Responde 403
+
+↳ Listar equipos con token inválido
+  GET http://localhost:8080/api/equipos [401 Unauthorized, 568B, 8ms]
+  ✓  Responde 401
+
+❏ 3 · Equipos
+↳ Listar equipos
+  GET http://localhost:8080/api/equipos [200 OK, 886B, 23ms]
+  ✓  Responde 200
+
+↳ Consultar equipo por id
+  GET http://localhost:8080/api/equipos/1 [200 OK, 536B, 77ms]
+  ✓  Responde 200
+
+↳ Consultar equipo inexistente
+  GET http://localhost:8080/api/equipos/9999 [404 Not Found, 545B, 48ms]
+  ✓  Responde 404
+
+↳ Crear equipo
+  POST http://localhost:8080/api/equipos [201 Created, 538B, 44ms]
+  ✓  Responde 201
+
+↳ Crear equipo con código duplicado
+  POST http://localhost:8080/api/equipos [409 Conflict, 570B, 21ms]
+  ✓  Responde 409
+
+↳ Crear equipo con datos inválidos
+  POST http://localhost:8080/api/equipos [400 Bad Request, 656B, 75ms]
+  ✓  Responde 400
+
+↳ Actualizar equipo
+  PUT http://localhost:8080/api/equipos/5 [200 OK, 537B, 96ms]
+  ✓  Responde 200
+
+↳ Eliminar equipo sin préstamos activos
+  DELETE http://localhost:8080/api/equipos/5 [204 No Content, 371B, 41ms]
+  ✓  Responde 204
+
+↳ Eliminar equipo con préstamo activo
+  DELETE http://localhost:8080/api/equipos/4 [409 Conflict, 577B, 25ms]
+  ✓  Responde 409
+
+❏ 4 · Préstamos
+↳ Listar préstamos
+  GET http://localhost:8080/api/prestamos [200 OK, 559B, 165ms]
+  ✓  Responde 200
+
+↳ Registrar préstamo del equipo 1
+  POST http://localhost:8080/api/prestamos [201 Created, 562B, 98ms]
+  ✓  Responde 201
+  ✓  El prestamo queda ACTIVO
+
+↳ Registrar otra vez el mismo equipo
+  POST http://localhost:8080/api/prestamos [409 Conflict, 550B, 23ms]
+  ✓  Responde 409
+
+↳ Registrar préstamo con fechas inválidas
+  POST http://localhost:8080/api/prestamos [400 Bad Request, 558B, 25ms]
+  ✓  Responde 400
+
+↳ Devolver el préstamo registrado
+  PUT http://localhost:8080/api/prestamos/2/devolver [200 OK, 559B, 45ms]
+  ✓  Responde 200
+
+↳ Devolver otra vez el mismo préstamo
+  PUT http://localhost:8080/api/prestamos/2/devolver [409 Conflict, 553B, 23ms]
+  ✓  Responde 409
+
+┌─────────────────────────┬───────────────────┬───────────────────┐
+│                         │          executed │            failed │
+├─────────────────────────┼───────────────────┼───────────────────┤
+│              iterations │                 1 │                 0 │
+├─────────────────────────┼───────────────────┼───────────────────┤
+│                requests │                22 │                 0 │
+├─────────────────────────┼───────────────────┼───────────────────┤
+│            test-scripts │                22 │                 0 │
+├─────────────────────────┼───────────────────┼───────────────────┤
+│      prerequest-scripts │                 0 │                 0 │
+├─────────────────────────┼───────────────────┼───────────────────┤
+│              assertions │                25 │                 0 │
+├─────────────────────────┴───────────────────┴───────────────────┤
+│ total run duration: 5.3s                                        │
+├─────────────────────────────────────────────────────────────────┤
+│ total data received: 3.71kB (approx)                            │
+├─────────────────────────────────────────────────────────────────┤
+│ average response time: 216ms [min: 8ms, max: 2.6s, s.d.: 553ms] │
+└─────────────────────────────────────────────────────────────────┘

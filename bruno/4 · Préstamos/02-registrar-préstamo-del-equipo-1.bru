@@ -1,0 +1,34 @@
+meta {
+  name: Registrar préstamo del equipo 1
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/prestamos
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Authorization: Bearer {{token}}
+}
+
+body:json {
+  {
+    "equipoId": 1,
+    "solicitante": "Ana Pérez",
+    "fechaPrestamo": "2026-10-28",
+    "fechaPrevistaDevolucion": "2026-11-04"
+  }
+}
+
+assert {
+  res.status: eq 201
+  res.body.estado: eq ACTIVO
+}
+
+script:post-response {
+  bru.setVar("prestamoId", res.body.id);
+}

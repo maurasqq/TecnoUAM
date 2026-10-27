@@ -1,0 +1,28 @@
+meta {
+  name: Crear equipo con datos inválidos
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseUrl}}/equipos
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Authorization: Bearer {{token}}
+}
+
+body:json {
+  {
+    "codigoPatrimonial": "",
+    "nombre": "",
+    "tipo": ""
+  }
+}
+
+assert {
+  res.status: eq 400
+}

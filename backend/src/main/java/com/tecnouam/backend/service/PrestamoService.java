@@ -14,4 +14,4 @@ public interface PrestamoService {
     PrestamoResponseDTO crear(PrestamoRequestDTO request);
 
     PrestamoResponseDTO devolver(Long id);
-}git add backend/src/main/java/com/tecnouam/backend/service/EquipoService.java
+}
