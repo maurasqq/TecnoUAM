@@ -89,7 +89,7 @@ La autorización se resuelve en la cadena de filtros, no con anotaciones, de mod
 
 **Qué lo incumplía.** No existía colección de Postman, ni capturas, ni datos de demostración: las migraciones creaban tablas vacías.
 
-**Cómo queda cumplido.** Colección con 22 peticiones en cuatro carpetas, que cubren los nueve escenarios y guardan los tokens automáticamente, sin contraseñas ni tokens dentro. Migración `V4` con cuatro equipos y un préstamo activo, de modo que los casos de `409` son reproducibles nada más arrancar.
+**Cómo queda cumplido.** Colección con 22 peticiones en cuatro carpetas, que cubren los nueve escenarios y guardan los tokens automáticamente, sin contraseñas ni tokens dentro. Ejecutada entera con Newman contra una base recreada desde cero: 25 comprobaciones, 0 fallos. Migración `V4` con cuatro equipos y un préstamo activo, de modo que los casos de `409` son reproducibles nada más arrancar.
 
 **Dónde.**
 
@@ -97,7 +97,9 @@ La autorización se resuelve en la cadena de filtros, no con anotaciones, de mod
 - `backend/src/main/resources/db/migration/V4__datos_demostracion.sql`
 - `README.md`
 - Commits `b314991`, `fccdf91`, `58d1575`
-- `evidencias/react/` y `evidencias/api/`
+- `evidencias/postman/newman-salida.txt`: la ejecución completa de la colección
+- `evidencias/react/`, `evidencias/api/pruebas-api.txt`
+- Pendiente: capturas del Collection Runner de Postman para la defensa
 
 ---
 

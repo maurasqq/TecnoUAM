@@ -16,11 +16,21 @@ Capturas y resultados de la ejecución real del sistema: PostgreSQL con las migr
 
 Las capturas 3, 4 y 5 son la prueba de integración que pide el enunciado: la operación se hace fuera de React y la tabla refleja el dato real al recargar. Ningún dato está simulado.
 
-## API — `api/`
+## Colección de Postman — `postman/`
 
-`pruebas-api.txt` recoge la ejecución de los 27 casos del examen contra la base recién creada: autenticación, los cinco casos de seguridad del enunciado, el CRUD de equipos, el ciclo de préstamo y devolución, y las tres variantes de borrado.
+`newman-salida.txt` es la ejecución de la colección `postman/TecnoUAM.postman_collection.json` con Newman, el ejecutor oficial de Postman. Muestra cada petición con su método, su URL, su código HTTP y el resultado de cada comprobación.
 
-Los mismos casos están en la colección de Postman, en `postman/TecnoUAM.postman_collection.json`.
+Resultado: 22 peticiones, 25 comprobaciones, 0 fallos, contra una base recreada desde cero.
+
+Cubre los nueve escenarios del Reto 4: alta de equipo, consulta, actualización, registro de préstamo, intento de prestar dos veces, devolución y recuperación del estado, borrado permitido y borrado bloqueado, y las respuestas 401 y 403.
+
+El informe en JSON que Newman puede generar no se guarda aquí: incluye las contraseñas y los tokens JWT completos de la ejecución, y el enunciado prohíbe exportarlos. La salida de texto no contiene ninguno.
+
+Para la defensa, la colección se abre en Postman y se ejecuta con el Collection Runner: las capturas de esa pantalla se añaden a esta carpeta.
+
+## Comprobación adicional — `api/`
+
+`pruebas-api.txt` es una segunda pasada de los mismos casos, hecha con peticiones directas, útil como comprobación rápida y reproducible desde la terminal.
 
 ## Cómo reproducirlo
 

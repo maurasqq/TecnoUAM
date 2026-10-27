@@ -28,6 +28,10 @@
     {
       "key": "equipoCreadoId",
       "value": ""
+    },
+    {
+      "key": "prestamoId",
+      "value": ""
     }
   ],
   "item": [
@@ -752,7 +756,9 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Responde 201\", function () { pm.response.to.have.status(201); });"
+                  "pm.test(\"Responde 201\", function () { pm.response.to.have.status(201); });",
+                  "pm.collectionVariables.set(\"prestamoId\", pm.response.json().id);",
+                  "pm.test(\"El prestamo queda ACTIVO\", function () { pm.expect(pm.response.json().estado).to.eql(\"ACTIVO\"); });"
                 ]
               }
             }
@@ -851,7 +857,7 @@
           ]
         },
         {
-          "name": "Devolver el préstamo 1",
+          "name": "Devolver el préstamo registrado",
           "request": {
             "method": "PUT",
             "header": [
@@ -861,13 +867,13 @@
               }
             ],
             "url": {
-              "raw": "{{baseUrl}}/prestamos/1/devolver",
+              "raw": "{{baseUrl}}/prestamos/{{prestamoId}}/devolver",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
                 "prestamos",
-                "1",
+                "{{prestamoId}}",
                 "devolver"
               ]
             }
@@ -886,7 +892,7 @@
           ]
         },
         {
-          "name": "Devolver otra vez el préstamo 1",
+          "name": "Devolver otra vez el mismo préstamo",
           "request": {
             "method": "PUT",
             "header": [
@@ -896,13 +902,13 @@
               }
             ],
             "url": {
-              "raw": "{{baseUrl}}/prestamos/1/devolver",
+              "raw": "{{baseUrl}}/prestamos/{{prestamoId}}/devolver",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
                 "prestamos",
-                "1",
+                "{{prestamoId}}",
                 "devolver"
               ]
             }
