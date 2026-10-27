@@ -1,0 +1,61 @@
+:root {
+  --tinta: #1a1a1a;
+  --gris: #666666;
+  --linea: #cccccc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--tinta);
+  background: white;
+  font-family: Georgia, serif;
+  line-height: 1.5;
+}
+
+h1 {
+  margin: 0 0 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--tinta);
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+
+h2 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: normal;
+}
+
+input {
+  padding: 0.4rem 0.5rem;
+  border: 1px solid var(--linea);
+  font: inherit;
+  color: inherit;
+}
+
+input:focus {
+  outline: 1px solid var(--tinta);
+}
+
+button {
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--tinta);
+  background: white;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  background: #f4f4f4;
+}
+
+button:disabled {
+  border-color: var(--linea);
+  color: var(--gris);
+  cursor: default;
+}
