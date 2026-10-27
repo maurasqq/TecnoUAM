@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import axiosClient from '../api/axiosClient.js'
 import { mensajeError } from '../api/mensajeError.js'
 import Mensaje from './Mensaje.jsx'
+import './TablaEquipos.css'
 
 export default function TablaEquipos({ onSesionInvalida }) {
   const [equipos, setEquipos] = useState([])

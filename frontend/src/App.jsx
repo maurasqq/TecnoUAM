@@ -2,6 +2,7 @@ import { useCallback, useState } from 'react'
 import LoginForm from './components/LoginForm.jsx'
 import TablaEquipos from './components/TablaEquipos.jsx'
 import { borrarSesion, guardarSesion, leerSesion } from './api/sesion.js'
+import './App.css'
 
 export default function App() {
   const [sesion, setSesion] = useState(leerSesion)

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import axiosClient from '../api/axiosClient.js'
 import { mensajeError } from '../api/mensajeError.js'
 import Mensaje from './Mensaje.jsx'
+import './LoginForm.css'
 
 export default function LoginForm({ onAutenticado }) {
   const [usuario, setUsuario] = useState('')
