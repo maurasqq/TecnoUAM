@@ -4,7 +4,7 @@ Un apartado por criterio de la rúbrica del examen (40 puntos): qué exige, qué
 
 Los identificadores de commit corresponden a la rama `etapa-5-integracion`.
 
-> **Pendiente:** las casillas marcadas con ⏳ necesitan ejecutar el sistema contra PostgreSQL. El código está integrado y compila, pero todavía no se ha arrancado de extremo a extremo.
+Verificado en ejecución real: base PostgreSQL creada desde cero, Flyway aplicando `V1` a `V4`, backend en el 8080 y React en el 5173. Los 27 casos de prueba pasan. El detalle está en `evidencias/api/pruebas-api.txt` y en `evidencias/react/`.
 
 ---
 
@@ -32,7 +32,7 @@ Los identificadores de commit corresponden a la rama `etapa-5-integracion`.
 - `backend/src/main/java/com/tecnouam/backend/service/impl/PrestamoServiceImpl.java`
 - `backend/src/main/resources/db/migration/V3__agregar_borrado_logico.sql`
 - Commits `6982fba`, `547d82b`, `60094a4`
-- ⏳ Evidencias en Postman
+- `evidencias/api/pruebas-api.txt`: el CRUD, el ciclo de préstamo y las tres variantes de borrado pasan, incluido el `204` al eliminar un equipo con préstamos históricos
 
 ---
 
@@ -56,7 +56,7 @@ La autorización se resuelve en la cadena de filtros, no con anotaciones, de mod
 - `backend/src/main/java/com/tecnouam/backend/auth/AuthController.java`
 - `backend/src/main/resources/application.properties`, `.env.example`
 - Commit `eb7c065`
-- ⏳ Evidencias de los cinco casos
+- `evidencias/api/pruebas-api.txt`: los cinco casos del enunciado pasan, más el token inválido
 
 > **Nota.** Las contraseñas retiradas siguen presentes en el historial de las ramas anteriores. Sacarlas del código evita que crezca el problema, pero las contraseñas que estuvieron publicadas deben cambiarse en PostgreSQL.
 
@@ -77,7 +77,7 @@ La autorización se resuelve en la cadena de filtros, no con anotaciones, de mod
 - `frontend/src/api/axiosClient.js`, `frontend/src/api/sesion.js`
 - `frontend/src/components/LoginForm.jsx`, `frontend/src/components/TablaEquipos.jsx`
 - Commit `af96da4`
-- ⏳ Evidencias de la secuencia Postman → recargar React
+- `evidencias/react/03-equipo-creado-desde-la-api.jpg`, `04-equipo-prestado.jpg`, `05-equipo-devuelto.jpg`: la operación se hace fuera de React y la tabla refleja el dato real al recargar
 
 ---
 
@@ -97,7 +97,7 @@ La autorización se resuelve en la cadena de filtros, no con anotaciones, de mod
 - `backend/src/main/resources/db/migration/V4__datos_demostracion.sql`
 - `README.md`
 - Commits `b314991`, `fccdf91`, `58d1575`
-- ⏳ Capturas en `evidencias/`
+- `evidencias/react/` y `evidencias/api/`
 
 ---
 
@@ -114,7 +114,7 @@ La autorización se resuelve en la cadena de filtros, no con anotaciones, de mod
 **Dónde.**
 
 - `git log --graph` sobre `etapa-5-integracion`
-- ⏳ Reparto de los temas de la defensa
+- Pendiente: repartir los temas de la defensa entre los cinco
 
 ---
 
@@ -126,4 +126,4 @@ La autorización se resuelve en la cadena de filtros, no con anotaciones, de mod
 | Migraciones y datos mínimos para reproducir la demostración | Hecho | `backend/src/main/resources/db/migration/` |
 | Colección Postman exportada | Hecho | `postman/TecnoUAM.postman_collection.json` |
 | README con ejecución, variables sin secretos, cuentas de prueba y endpoints | Hecho | `README.md` |
-| Evidencias de las pruebas | ⏳ Pendiente | `evidencias/` |
+| Evidencias de las pruebas | Hecho | `evidencias/react/`, `evidencias/api/pruebas-api.txt` |
