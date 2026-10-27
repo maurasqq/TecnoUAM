@@ -1,6 +1,9 @@
 
 package com.tecnouam.backend.config;
 
+import com.tecnouam.backend.security.CustomAccessDeniedHandler;
+import com.tecnouam.backend.security.CustomAuthenticationEntryPoint;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -11,23 +14,35 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfig {
 
+    private final CustomAuthenticationEntryPoint authenticationEntryPoint;
+    private final CustomAccessDeniedHandler accessDeniedHandler;
+
+    public SecurityConfig(
+            CustomAuthenticationEntryPoint authenticationEntryPoint,
+            CustomAccessDeniedHandler accessDeniedHandler
+    ) {
+        this.authenticationEntryPoint = authenticationEntryPoint;
+        this.accessDeniedHandler = accessDeniedHandler;
+    }
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http)
             throws Exception {
 
         http
-                .cors(cors ->{})
-                .csrf(
-                        csrf -> csrf.disable())
+                .cors(cors -> {})
+                .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
+                .exceptionHandling(ex -> ex
+                        .authenticationEntryPoint(authenticationEntryPoint)
+                        .accessDeniedHandler(accessDeniedHandler)
+                )
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(HttpMethod.POST, "/api/auth/login")
+                        .permitAll()
 
-                        // Login público
-                        .requestMatchers("/api/auth/login").permitAll()
-
-                        // USER y ADMIN pueden consultar equipos y préstamos
                         .requestMatchers(
                                 HttpMethod.GET,
                                 "/api/equipos",
@@ -36,7 +51,6 @@ public class SecurityConfig {
                                 "/api/prestamos/**"
                         ).hasAnyRole("USER", "ADMIN")
 
-                        // Solo ADMIN puede crear, modificar y eliminar
                         .requestMatchers(
                                 HttpMethod.POST,
                                 "/api/equipos",
@@ -54,7 +68,6 @@ public class SecurityConfig {
                                 "/api/equipos/**"
                         ).hasRole("ADMIN")
 
-                        // Cualquier otra solicitud requiere autenticación
                         .anyRequest().authenticated()
                 );
 
