@@ -1,0 +1,15 @@
+.contenedor {
+  max-width: 50rem;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.barra {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--linea);
+  font-size: 0.875rem;
+  color: var(--gris);
+}

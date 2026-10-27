@@ -1,0 +1,12 @@
+.mensaje {
+  margin-top: 1rem;
+  padding-left: 0.75rem;
+  border-left: 2px solid var(--linea);
+  font-size: 0.9375rem;
+  color: var(--gris);
+}
+
+.error {
+  border-left-color: var(--tinta);
+  color: var(--tinta);
+}

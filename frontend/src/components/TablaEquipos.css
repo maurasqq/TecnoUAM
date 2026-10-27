@@ -1,0 +1,25 @@
+.encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem 0 1rem;
+}
+
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.tabla th,
+.tabla td {
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--linea);
+  text-align: left;
+}
+
+.tabla th {
+  border-bottom: 1px solid var(--tinta);
+  font-weight: normal;
+  color: var(--gris);
+}
