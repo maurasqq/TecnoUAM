@@ -9,5 +9,5 @@ export function mensajeError(error, textoPorDefecto) {
   if (status === 403) {
     return 'El rol actual no tiene permiso para esta operación.'
   }
-  return data?.mensaje ?? textoPorDefecto
+  return data?.message ?? textoPorDefecto
 }
