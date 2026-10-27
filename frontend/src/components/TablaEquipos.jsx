@@ -14,7 +14,7 @@ export default function TablaEquipos({ onSesionInvalida }) {
     setError(null)
     try {
       const { data } = await axiosClient.get('/equipos')
-      setEquipos(data)
+      setEquipos(Array.isArray(data) ? data : [])
     } catch (problema) {
       setEquipos([])
       setError(mensajeError(problema, 'No se pudieron obtener los equipos.'))
@@ -48,10 +48,10 @@ export default function TablaEquipos({ onSesionInvalida }) {
         <table className="tabla">
           <thead>
             <tr>
-              <th>Código patrimonial</th>
-              <th>Nombre</th>
-              <th>Tipo</th>
-              <th>Estado</th>
+              <th scope="col">Código patrimonial</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Tipo</th>
+              <th scope="col">Estado</th>
             </tr>
           </thead>
           <tbody>
