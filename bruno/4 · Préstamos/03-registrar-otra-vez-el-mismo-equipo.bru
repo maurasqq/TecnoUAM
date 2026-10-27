@@ -1,0 +1,29 @@
+meta {
+  name: Registrar otra vez el mismo equipo
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/prestamos
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Authorization: Bearer {{token}}
+}
+
+body:json {
+  {
+    "equipoId": 1,
+    "solicitante": "Carlos Ruiz",
+    "fechaPrestamo": "2026-10-28",
+    "fechaPrevistaDevolucion": "2026-11-04"
+  }
+}
+
+assert {
+  res.status: eq 409
+}

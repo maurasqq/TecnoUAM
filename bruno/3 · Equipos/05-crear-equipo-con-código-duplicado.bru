@@ -1,0 +1,28 @@
+meta {
+  name: Crear equipo con código duplicado
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/equipos
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Authorization: Bearer {{token}}
+}
+
+body:json {
+  {
+    "codigoPatrimonial": "PAT-100",
+    "nombre": "Repetido",
+    "tipo": "LAPTOP"
+  }
+}
+
+assert {
+  res.status: eq 409
+}

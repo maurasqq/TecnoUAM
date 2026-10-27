@@ -1,0 +1,87 @@
+Ejecucion de la coleccion con el CLI de Bruno
+Fecha: 2026-10-26 23:17
+
+1 · Autenticación/01-login-admin (200 ) - 2661 ms
+Assertions
+   ✓ res.status: eq 200
+   ✓ res.body.role: eq ADMIN
+1 · Autenticación/02-login-user (200 ) - 181 ms
+Assertions
+   ✓ res.status: eq 200
+   ✓ res.body.role: eq USER
+1 · Autenticación/03-login-con-credenciales-incorrectas (401 ) - 255 ms
+Assertions
+   ✓ res.status: eq 401
+2 · Seguridad/01-listar-equipos-sin-token (401 ) - 10 ms
+Assertions
+   ✓ res.status: eq 401
+2 · Seguridad/02-listar-equipos-con-token-user (200 ) - 851 ms
+Assertions
+   ✓ res.status: eq 200
+2 · Seguridad/03-crear-equipo-con-token-user (403 ) - 17 ms
+Assertions
+   ✓ res.status: eq 403
+2 · Seguridad/04-listar-equipos-con-token-inválido (401 ) - 13 ms
+Assertions
+   ✓ res.status: eq 401
+3 · Equipos/01-listar-equipos (200 ) - 23 ms
+Assertions
+   ✓ res.status: eq 200
+3 · Equipos/02-consultar-equipo-por-id (200 ) - 75 ms
+Assertions
+   ✓ res.status: eq 200
+3 · Equipos/03-consultar-equipo-inexistente (404 ) - 48 ms
+Assertions
+   ✓ res.status: eq 404
+3 · Equipos/04-crear-equipo (201 ) - 45 ms
+Assertions
+   ✓ res.status: eq 201
+3 · Equipos/05-crear-equipo-con-código-duplicado (409 ) - 22 ms
+Assertions
+   ✓ res.status: eq 409
+3 · Equipos/06-crear-equipo-con-datos-inválidos (400 ) - 72 ms
+Assertions
+   ✓ res.status: eq 400
+3 · Equipos/07-actualizar-equipo (200 ) - 92 ms
+Assertions
+   ✓ res.status: eq 200
+3 · Equipos/08-eliminar-equipo-sin-préstamos-activos (204 ) - 46 ms
+Assertions
+   ✓ res.status: eq 204
+3 · Equipos/09-eliminar-equipo-con-préstamo-activo (409 ) - 27 ms
+Assertions
+   ✓ res.status: eq 409
+4 · Préstamos/01-listar-préstamos (200 ) - 168 ms
+Assertions
+   ✓ res.status: eq 200
+4 · Préstamos/02-registrar-préstamo-del-equipo-1 (201 ) - 101 ms
+Assertions
+   ✓ res.status: eq 201
+   ✓ res.body.estado: eq ACTIVO
+4 · Préstamos/03-registrar-otra-vez-el-mismo-equipo (409 ) - 23 ms
+Assertions
+   ✓ res.status: eq 409
+4 · Préstamos/04-registrar-préstamo-con-fechas-inválidas (400 ) - 26 ms
+Assertions
+   ✓ res.status: eq 400
+4 · Préstamos/05-devolver-el-préstamo-registrado (200 ) - 46 ms
+Assertions
+   ✓ res.status: eq 200
+4 · Préstamos/06-devolver-otra-vez-el-mismo-préstamo (409 ) - 21 ms
+Assertions
+   ✓ res.status: eq 409
+
+📊 Execution Summary
+┌───────────────┬────────────────┐
+│ Metric        │     Result     │
+├───────────────┼────────────────┤
+│ Status        │     ✓ PASS     │
+├───────────────┼────────────────┤
+│ Requests      │ 22 (22 Passed) │
+├───────────────┼────────────────┤
+│ Tests         │      0/0       │
+├───────────────┼────────────────┤
+│ Assertions    │     25/25      │
+├───────────────┼────────────────┤
+│ Duration (ms) │      6245      │
+└───────────────┴────────────────┘

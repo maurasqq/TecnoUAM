@@ -28,6 +28,19 @@ El informe en JSON que Newman puede generar no se guarda aquí: incluye las cont
 
 Para la defensa, la colección se abre en Postman y se ejecuta con el Collection Runner: las capturas de esa pantalla se añaden a esta carpeta.
 
+## Colección en Bruno — `bruno/`
+
+La misma colección está convertida al formato de Bruno, en la carpeta `bruno/` de la raíz. `bruno-salida.txt` recoge su ejecución con el CLI de Bruno: 22 peticiones, 25 comprobaciones, todas correctas.
+
+Para capturar la pantalla durante la defensa:
+
+1. Abrir Bruno y elegir **Open Collection**, apuntando a la carpeta `bruno/`.
+2. Seleccionar el entorno **Local** arriba a la derecha.
+3. Rellenar `adminPassword` y `userPassword` con los valores de `DEMO_ADMIN_PASSWORD` y `DEMO_USER_PASSWORD`.
+4. Pulsar **Run** sobre la colección y capturar el resumen, y cada carpeta por separado si se quiere el detalle.
+
+Las capturas se guardan en esta misma carpeta.
+
 ## Comprobación adicional — `api/`
 
 `pruebas-api.txt` es una segunda pasada de los mismos casos, hecha con peticiones directas, útil como comprobación rápida y reproducible desde la terminal.

@@ -1,0 +1,19 @@
+meta {
+  name: Listar equipos
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/equipos
+  body: none
+  auth: none
+}
+
+headers {
+  Authorization: Bearer {{token}}
+}
+
+assert {
+  res.status: eq 200
+}

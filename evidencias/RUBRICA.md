@@ -99,7 +99,9 @@ La autorización se resuelve en la cadena de filtros, no con anotaciones, de mod
 - Commits `b314991`, `fccdf91`, `58d1575`
 - `evidencias/postman/newman-salida.txt`: la ejecución completa de la colección
 - `evidencias/react/`, `evidencias/api/pruebas-api.txt`
-- Pendiente: capturas del Collection Runner de Postman para la defensa
+- `evidencias/bruno/bruno-salida.txt`: la misma colección ejecutada con el CLI de Bruno
+- `bruno/`: la colección en formato Bruno, lista para abrir y ejecutar en la aplicación
+- Pendiente: capturas de pantalla del ejecutor, que requieren la aplicación abierta
 
 ---
 

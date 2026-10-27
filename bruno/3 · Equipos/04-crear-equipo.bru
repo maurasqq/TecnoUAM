@@ -1,0 +1,32 @@
+meta {
+  name: Crear equipo
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/equipos
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Authorization: Bearer {{token}}
+}
+
+body:json {
+  {
+    "codigoPatrimonial": "PAT-100",
+    "nombre": "Laptop Lenovo ThinkPad",
+    "tipo": "LAPTOP"
+  }
+}
+
+assert {
+  res.status: eq 201
+}
+
+script:post-response {
+  bru.setVar("equipoCreadoId", res.body.id);
+}

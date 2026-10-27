@@ -1,0 +1,29 @@
+meta {
+  name: Registrar préstamo con fechas inválidas
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/prestamos
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Authorization: Bearer {{token}}
+}
+
+body:json {
+  {
+    "equipoId": 2,
+    "solicitante": "Ana Pérez",
+    "fechaPrestamo": "2026-11-04",
+    "fechaPrevistaDevolucion": "2026-10-28"
+  }
+}
+
+assert {
+  res.status: eq 400
+}

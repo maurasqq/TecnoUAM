@@ -1,0 +1,15 @@
+meta {
+  name: Listar equipos sin token
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/equipos
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 401
+}

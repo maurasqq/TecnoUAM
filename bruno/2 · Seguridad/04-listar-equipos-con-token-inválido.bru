@@ -1,0 +1,19 @@
+meta {
+  name: Listar equipos con token inválido
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/equipos
+  body: none
+  auth: none
+}
+
+headers {
+  Authorization: Bearer token-invalido
+}
+
+assert {
+  res.status: eq 401
+}
