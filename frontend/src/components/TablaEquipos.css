@@ -1,31 +1,25 @@
-.encabezado-seccion {
+.encabezado {
   display: flex;
-  align-items: baseline;
   justify-content: space-between;
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-.encabezado-seccion h2 {
-  margin: 0;
+  align-items: center;
+  margin: 2rem 0 1rem;
 }
 
 .tabla {
   width: 100%;
-  margin-top: 1rem;
   border-collapse: collapse;
   font-size: 0.9375rem;
 }
 
 .tabla th,
 .tabla td {
-  text-align: left;
-  padding: 0.5rem 0.5rem;
+  padding: 0.5rem;
   border-bottom: 1px solid var(--linea);
+  text-align: left;
 }
 
 .tabla th {
+  border-bottom: 1px solid var(--tinta);
   font-weight: normal;
   color: var(--gris);
-  border-bottom: 1px solid var(--tinta);
 }

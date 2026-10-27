@@ -48,7 +48,7 @@ export default function LoginForm({ onAutenticado }) {
       <button type="submit" disabled={cargando}>
         {cargando ? 'Entrando…' : 'Entrar'}
       </button>
-      {error && <Mensaje tipo="error">{error}</Mensaje>}
+      {error && <Mensaje error>{error}</Mensaje>}
     </form>
   )
 }

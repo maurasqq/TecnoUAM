@@ -1,16 +1,20 @@
 .formulario {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
   max-width: 20rem;
 }
 
 .formulario label {
+  display: block;
+  margin-top: 1rem;
   font-size: 0.875rem;
   color: var(--gris);
-  margin-top: 0.5rem;
+}
+
+.formulario input {
+  display: block;
+  width: 100%;
 }
 
 .formulario button {
-  margin-top: 1rem;
+  width: 100%;
+  margin-top: 1.5rem;
 }

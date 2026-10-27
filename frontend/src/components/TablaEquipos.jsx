@@ -32,7 +32,7 @@ export default function TablaEquipos({ onSesionInvalida }) {
 
   return (
     <section>
-      <div className="encabezado-seccion">
+      <div className="encabezado">
         <h2>Equipos</h2>
         <button type="button" onClick={cargarEquipos} disabled={cargando}>
           Recargar
@@ -40,7 +40,7 @@ export default function TablaEquipos({ onSesionInvalida }) {
       </div>
 
       {cargando && <Mensaje>Cargando equipos…</Mensaje>}
-      {!cargando && error && <Mensaje tipo="error">{error}</Mensaje>}
+      {!cargando && error && <Mensaje error>{error}</Mensaje>}
       {!cargando && !error && equipos.length === 0 && (
         <Mensaje>No hay equipos registrados.</Mensaje>
       )}

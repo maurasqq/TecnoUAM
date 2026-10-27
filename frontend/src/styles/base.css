@@ -1,9 +1,7 @@
 :root {
   --tinta: #1a1a1a;
-  --papel: #ffffff;
   --gris: #666666;
   --linea: #cccccc;
-  --fondo-suave: #f4f4f4;
 }
 
 * {
@@ -12,55 +10,52 @@
 
 body {
   margin: 0;
-  background: var(--papel);
   color: var(--tinta);
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 16px;
+  background: white;
+  font-family: Georgia, serif;
   line-height: 1.5;
 }
 
 h1 {
+  margin: 0 0 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--tinta);
   font-size: 1.5rem;
   font-weight: normal;
-  border-bottom: 1px solid var(--tinta);
-  padding-bottom: 0.5rem;
-  margin: 0 0 1.5rem;
 }
 
 h2 {
+  margin: 0;
   font-size: 1.125rem;
   font-weight: normal;
-  margin: 0 0 1rem;
 }
 
 input {
-  font: inherit;
   padding: 0.4rem 0.5rem;
   border: 1px solid var(--linea);
-  background: var(--papel);
-  color: var(--tinta);
+  font: inherit;
+  color: inherit;
 }
 
 input:focus {
   outline: 1px solid var(--tinta);
-  border-color: var(--tinta);
 }
 
 button {
-  font: inherit;
   padding: 0.4rem 1rem;
   border: 1px solid var(--tinta);
-  background: var(--papel);
-  color: var(--tinta);
+  background: white;
+  font: inherit;
+  color: inherit;
   cursor: pointer;
 }
 
 button:hover:not(:disabled) {
-  background: var(--fondo-suave);
+  background: #f4f4f4;
 }
 
 button:disabled {
-  color: var(--gris);
   border-color: var(--linea);
+  color: var(--gris);
   cursor: default;
 }

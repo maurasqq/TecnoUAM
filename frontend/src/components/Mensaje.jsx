@@ -1,5 +1,5 @@
 import './Mensaje.css'
 
-export default function Mensaje({ tipo = 'aviso', children }) {
-  return <p className={`mensaje mensaje--${tipo}`}>{children}</p>
+export default function Mensaje({ error = false, children }) {
+  return <p className={error ? 'mensaje error' : 'mensaje'}>{children}</p>
 }
